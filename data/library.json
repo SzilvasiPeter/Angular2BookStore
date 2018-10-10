@@ -1,0 +1,111 @@
+[
+			  {
+			    "id":"1",
+			    "title":"Tools of Titans",
+			    "description":"I created this book, my ultimate notebook of high-leverage tools, for myself. It’s changed my life, and I hope the same for you.",
+			    "price":19.70,
+			    "posted":"2017-10-24",
+			    "author": {
+			      "name":"Timothy Ferriss",
+			      "phone":"(555) 555-5555",
+			      "email":"timothyferris@gmail.com"
+			    },
+			    "genres":[
+			      "Business",
+			      "Nonfiction",
+			      "Self Help"
+			    ],
+			    "image": "http://localhost:8080/css/pictures/toolsOfTitans.jpg",
+			    "views":213
+			  },
+			  {
+			    "id":"2",
+			    "title":"Steve Jobs",
+			    "description":"In Steve Jobs: The Exclusive Biography, Isaacson provides an extraordinary account of Jobs' professional and personal life.",
+			    "price": 11.99,
+			    "posted": "2017-10-28",
+			    "author": {
+			      "name": "Walter Isaacson",
+			      "phone": "(555) 555-5555",
+			      "email": "walterisaacson@gmail.com"
+			    },
+			    "genres": [
+			      "Biography"
+			    ],
+			    "image":"http://localhost:8080/css/pictures/steveJobs.jpg",
+			    "views": 422
+			  },
+			  {
+			    "id":"3",
+			    "title":"The Whole30",
+			    "description":"Millions of people visit Whole30.com every month and share their stories of weight loss and lifestyle makeovers. Hundreds of thousands of them have read It Starts With Food, which explains the science behind the program.",
+			    "price":15.97,
+			    "posted":"2017-10-27",
+			    "author": {
+			      "name":"Melissa Hartwig",
+			      "phone":"(555) 555-5555",
+			      "email":"melissahartwig@gmail.com"
+			    },
+			    "genres":[
+			      "Cookbooks",
+			      "Health"
+			    ],
+			    "image":"http://localhost:8080/css/pictures/whole30.jpg",
+			    "views":23
+			  },
+			  {
+			    "id":"4",
+			    "title":"Nudge",
+			    "description":"Every day, we make decisions on topics ranging from personal investments to schools for our children to the meals we eat to the causes we champion. Unfortunately, we often choose poorly.",
+			    "price":12.02,
+			    "posted":"2017-11-01",
+			    "author": {
+			      "name":"Richard H. Thaler",
+			      "phone":"(555) 555-5555",
+			      "email":"richardh.thaler@gmail.com"
+			    },
+			    "genres":[
+			      "Business",
+			      "Psychology",
+			      "Self Help"
+			    ],
+			    "image":"http://localhost:8080/css/pictures/nudge.jpg",
+			    "views":77
+			  },
+			  {
+			    "id":"5",
+			    "title":"Seven Brief Lessons on Physics",
+			    "description":"In seven brief lessons, Italian theoretical physicist Carlo Rovelli guides readers with admirable clarity through the most transformative physics breakthroughs of the twentieth and twenty-first centuries.",
+			    "price":9.34,
+			    "posted":"2017-11-02",
+			    "author": {
+			      "name":"Carlo Rovelli",
+			      "phone":"(555) 555-5555",
+			      "email":"carlorovelli@gmail.com"
+			    },
+			    "genres":[
+			      "Science",
+			      "Nonfiction"
+			    ],
+			    "image":"http://localhost:8080/css/pictures/sevenBriefLessonsOnPhysics.jpg",
+			    "views":889
+			  },
+			  {
+			    "id":"6",
+			    "title":"Cosmos",
+			    "description":"Cosmos has 13 heavily illustrated chapters, corresponding to the 13 episodes of the Cosmos television series. In the book, Sagan explores 15 billion years of cosmic evolution and the development of science and civilization.",
+			    "price":11.42,
+			    "posted":"2017-11-03",
+			    "author": {
+			      "name":"Carl Sagan",
+			      "phone":"(555) 555-5555",
+			      "email":"carlsagan@gmail.com"
+			    },
+			    "genres":[
+			      "Science",
+			      "Astronomy"
+			    ],
+			    "image":"http://localhost:8080/css/pictures/cosmos.jpg",
+			    "views":423
+			  }
+			]

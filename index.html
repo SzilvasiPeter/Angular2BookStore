@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Library</title>
+	<link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+	<link href="node_modules/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-app="ngLibrary" ng-controller="libraryCtrl">
+
+	<hello-world></hello-world>
+	<div layout="column" layout-padding ng-cloak>
+  <md-content id="login" class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+    <md-icon class="mdi mdi-account-circle"></md-icon>
+      <label>Name</label>
+      <input ng-model="name" type="text">
+    </md-input-container>
+  </md-content>
+  <md-content id="login" class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+    <md-icon class="mdi mdi-account-key"></md-icon>
+      <input ng-model="password" type="password" placeholder="Password">
+    </md-input-container>
+    <md-input-container>
+      <md-button class="md-raised md-primary" ng-click="submit=true">Submit</md-button>
+    </md-input-container>
+  </md-content>
+
+</div>	
+	</md-content>
+	<h2>Hello <i ng-bind="name"></i>, how are you today?</h2>
+	<md-button ng-click="showName = true" class="md-raised md-primary">Show creator</md-button>
+	<md-button ng-click="showName = false" class="md-raised md-warn">Hide creator</md-button>
+	<md-button ng-click="showName = false" class="md-raised" ng-disabled="true">I do nothing</md-button>
+	<div ng-show="showName">
+	<h4 id="creator">Szilvási Péter<md-icon id="copyright" class="mdi mdi-copyright"></md-icon></h4>
+	</div>
+
+	<md-toolbar>
+		<div class="md-toolbar-tools" id="toolbar">
+			<p><strong>Books</strong></p>
+			<md-button ng-click="openSidebar()" ng-disabled="(name!='Admin') || (password!='1234') || (!submit)">
+				<md-icon class="mdi mdi-cart-plus"></md-icon>
+				New Book
+			</md-button>
+			<md-button ng-click="showFilters=!(showFilters)">
+				<md-icon class="mdi mdi-magnify"></md-icon>
+				Filters
+			</md-button>
+		</div>
+	</md-toolbar>
+
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+		<md-toolbar>
+			<h1 class="md-toolbar-tools">Add a Book</h1>
+		</md-toolbar>
+	<md-content layout-padding>
+	<form>
+	<md-input-container>
+	<label for="title">Title</label>
+	<input type="text" id="title" ng-model="book.title" md-autofocus>
+	</md-input-container>
+	<md-input-container>
+	<label for="price">Price</label>
+	<input type="text" id="price" ng-model="book.price">
+	</md-input-container>
+		<md-input-container>
+		<label for="description">Description</label>
+		<textarea type="text" id="description" ng-model="book.description"></textarea>
+		</md-input-container>
+<!-- 		<md-input-container>
+		<label for="price">Genre</label>
+		<input type="text" id="genre" ng-model="book.genres">
+		</md-input-container> -->
+		<md-input-container>
+		<label for="image">Image Link</label>
+		<input type="text" id="image" ng-model="book.image">
+		</md-input-container>
+		<md-button class="md-primary" ng-click="saveBook(book)" ng-show="!(editing)">Save
+		</md-button>
+		<md-button class="md-primary" ng-click="saveEdit()" ng-show="editing">Save Edit
+		</md-button>
+		<md-button class="md-warn" ng-click="closeSidebar()">Cancel
+		</md-button>
+	<pre>{{book | json}}</pre>
+	</form>
+	</md-content>
+	</md-sidenav>
+
+	<div class="filters" layout="row" layout-align="center center" ng-show="showFilters">
+		<md-input-container layout="row">
+			<label>Enter Search Term</label>
+			<input type="text" ng-model="BookFilter">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Genres</label>
+			<md-select ng-model="category">
+				<md-option ng-repeat="category in genres" value="{{category}}">
+					{{ category }}
+				</md-option>
+			</md-select>
+		</md-input-container>
+
+		<div layout="row">
+			<md-button class="md-warn" ng-click="BookFilter = ''; category=''">
+				Clear
+			</md-button>
+		</div>
+	</div>
+
+	<br>
+	<md-content class="md-padding" layout="row" layout-wrap>
+	<md-card ng-repeat="book in books | filter: BookFilter | filter: category" flex="30" class="book">
+		<img ng-src="{{book.image}}" alt="">
+		<md-card-content>
+			<div class="classified-info" ng-show="!showContact">
+
+				<h2 class="md-title">{{book.title}}</h2>
+				<h2>{{book.posted | date:'longDate'}}</h2>
+				<h3>{{book.price | currency:Ft:0}}</h3>
+				<p>{{book.description}}</p>
+			</div>
+
+			<div class="classified-contact" ng-show="showContact">
+				<p><md-icon class="mdi mdi-account"></md-icon>{{book.author.name}}</p>
+				<p><md-icon class="mdi mdi-phone"></md-icon>{{book.author.phone}}</p>
+				<p><md-icon class="mdi mdi-email"></md-icon>{{book.author.email}}</p>
+			</div>
+			<div layout="row" layout-wrap>
+				<md-button ng-click="showContact = true" ng-show="!showContact">Author</md-button>
+				<md-button ng-click="showContact = false" ng-show="showContact">Description</md-button>
+				<md-button ng-click="showAdmin = true" ng-show="!showAdmin" ng-disabled="(name!='Admin') || (password!='1234') || (!submit)">Admin</md-button>
+				<md-button ng-click="showAdmin = false" ng-show="showAdmin">Close</md-button>
+			</div>
+			<div class="classified-admin" ng-if="showAdmin">
+				<h3>Admin</h3>
+				<div layout="row" layout-wrap>
+					<md-button class="md-primary" ng-click="editBook(book)">Edit</md-button>
+					<md-button class="md-warn" ng-click="deleteBook($event, book)">Delete</md-button>
+				</div>
+			</div>
+		</md-card-content>
+	</md-card>
+	</md-content>
+
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.js"></script>
+	<script src="node_modules/angular-aria/angular-aria.js"></script>
+	<script src="node_modules/angular-material/angular-material.js"></script>
+	<!--<script src="node_modules/bower-angular-i18n-master/bower-angular-i18n-master/angular-locale_hu-hu.js"></script>-->
+	<script src="scripts/app.js"></script>
+	<script src="components/library.ctr.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+</body>
+</html>
